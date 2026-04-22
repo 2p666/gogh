@@ -1,0 +1,140 @@
+body, html {
+    margin: 0; padding: 0;
+    width: 100%; height: 100%;
+    background: #000;
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cosmic-bg {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, #0a1a3a 0%, #000 70%);
+    z-index: -1;
+}
+
+.star-system {
+    position: absolute;
+    width: 100%; height: 100%;
+    pointer-events: none;
+}
+
+.star-orbit {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 600px; height: 600px;
+    margin-top: -300px; margin-left: -300px;
+    animation: rotate 20s linear infinite;
+}
+
+.delay { animation-duration: 25s; animation-direction: reverse; }
+
+.giant-star {
+    font-size: 80px;
+    color: #0f31f1;
+    text-shadow: 0 0 30px #0fbcf1, 0 0 60px #f1c40f;
+    position: absolute;
+    top: 0; left: 50%;
+}
+
+@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+.celebration-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(241, 196, 15, 0.3);
+    padding: 60px;
+    border-radius: 40px;
+    text-align: center;
+    max-width: 90%;
+    width: 1100px;
+    box-shadow: 0 0 100px rgba(241, 196, 15, 0.1);
+    position: relative;
+    animation: float 6s ease-in-out infinite;
+    z-index: 10;
+}
+
+.anniversary-badge {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f1c40f;
+    color: #000;
+    padding: 10px 40px;
+    font-weight: 900;
+    border-radius: 50px;
+    font-size: 1.5rem;
+    box-shadow: 0 0 20px #f1c40f;
+}
+
+.main-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4rem;
+    color: #f1c40f;
+    margin-bottom: 40px;
+    text-shadow: 0 0 15px rgba(241, 196, 15, 0.5);
+}
+
+.content-grid {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.photo-side { width: 250px; }
+.photo-side img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 2px solid #f1c40f;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.photo-caption {
+    font-size: 0.9rem;
+    margin-top: 15px;
+    font-style: italic;
+    color: #f1c40f;
+}
+
+.text-center {
+    flex: 1;
+    font-size: 1.3rem;
+    line-height: 1.8;
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.scroll-text p { margin-bottom: 25px; }
+
+.tiny-star {
+    position: absolute;
+    width: 2px; height: 2px;
+    background: #eeff00;
+    border-radius: 50%;
+    animation: blink 2s infinite;
+}
+
+@keyframes blink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+
+.back-btn {
+    display: inline-block;
+    margin-top: 30px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    transition: 0.3s;
+}
+.back-btn:hover { opacity: 1; color: #f1c40f; }
+
+.text-center::-webkit-scrollbar { width: 5px; }
+.text-center::-webkit-scrollbar-thumb { background: #f1c40f; border-radius: 10px; }
