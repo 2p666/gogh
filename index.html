@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nossa Noite Estrelada</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,500;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="gogh.css" />
+</head>
+<body>
+  <button id="fullscreenBtn" class="fullscreen-btn">⛶</button>
+
+  <section id="deviceChoice" class="device-choice">
+    <div class="choice-box">
+      <p class="choice-kicker">Dia dos Namorados</p>
+      <h1>Nossa Noite Estrelada</h1>
+      <p>Escolha como você quer abrir essa pequena galáxia que fiz para você.</p>
+      <div class="device-actions">
+        <button data-mode="mobile" class="device-btn"><span>📱</span> Celular</button>
+        <button data-mode="pc" class="device-btn"><span>💻</span> Computador</button>
+      </div>
+    </div>
+  </section>
+
+  <audio id="musica" loop>
+    <source src="Music/Mac Miller.mp3" type="audio/mpeg" />
+  </audio>
+
+  <canvas id="starCanvas"></canvas>
+  <div id="heartLayer"></div>
+
+  <div id="musicContainer">
+    <button id="playBtn" class="btn-gogh">♡</button>
+  </div>
+
+  <main id="mainSite" class="site hidden">
+    <section class="art-section section1">
+      <div class="bg-layer"></div>
+      <img src="imGogh/MoldGogh3.png" class="corner-decoration corner-top" />
+      <img src="imGogh/MoldGogh2.png" class="corner-decoration corner-bottom" />
+
+      <div class="gallery-wrapper">
+        <div class="art-frame vertical" data-caption="A primeira estrela da noite - [Dia dos Namorados]" onclick="ampliarMidia(this)">
+          <img src="imGogh/GoghMold.png" class="frame-custom-img" />
+          <video autoplay loop muted playsinline><source src="imGogh/Goghvideo.mp4" type="video/mp4" /></video>
+        </div>
+
+        <div class="text-platform">
+          <p class="small-label">Van Gogh em rosa</p>
+          <h1 class="glow-title">Onde Tudo Começa</h1>
+          <div class="typing-area">
+            <p class="digitar">Como Van Gogh buscou luz no meio da noite, eu também fui encontrando cor nos detalhes mais simples ao seu lado. Hoje, no Dia dos Namorados, eu quis transformar a Noite Estrelada em algo nosso: azul profundo, estrelas rosas, corações discretos e uma frase que sempre volta para você: eu te amo.</p>
+          </div>
+          <div class="dedicatoria">“Algumas estrelas não ficam no céu. Algumas viram pessoas.”</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="art-section section2">
+      <div class="bg-layer"></div>
+      <img src="imGogh/MoldGogh3.png" class="corner-decoration corner-top" />
+      <img src="imGogh/MoldGogh2.png" class="corner-decoration corner-bottom" />
+
+      <div class="gallery-wrapper reverse">
+        <div class="text-platform">
+          <p class="small-label">Minha obra favorita</p>
+          <h1 class="glow-title">Brilho Constante</h1>
+          <div class="typing-area">
+            <p class="digitar">Eu já fiz presentes, sites, cartas, flores e detalhes que talvez só eu perceba. Mas no fundo todos eles dizem a mesma coisa: você se tornou uma das partes mais bonitas da minha vida. Se cada presente é uma obra, então nossa história é o museu inteiro.</p>
+          </div>
+          <div class="dedicatoria">“Feliz Dia dos Namorados, minha estrela favorita.”</div>
+        </div>
+
+        <div class="art-frame horizontal" data-caption="Nossa obra-prima - [Nós dois]" onclick="ampliarMidia(this)">
+          <img src="imGogh/GoghMold.png" class="frame-custom-img" />
+          <img src="imGogh/Gogh2p.jpeg" />
+        </div>
+      </div>
+    </section>
+
+    <section class="art-section section-love">
+      <div class="bg-layer love-bg"></div>
+      <div class="love-panel text-platform centered reveal">
+        <p class="small-label">Interação escondida</p>
+        <h2 class="glow-title">Toque no céu</h2>
+        <p class="digitar done">As estrelas rosas no fundo estão formando uma mensagem. </p>
+        <div class="letter-row"><span>E</span><span>U</span><span>T</span><span>E</span><span>A</span><span>M</span><span>O</span></div>
+      </div>
+    </section>
+
+    <section class="art-section section3">
+      <div id="secretDoor">
+        <img src="imGogh/2PGogh.png" alt="Estrela Secreta" class="secret-icon" />
+      </div>
+      <div class="bg-layer"></div>
+      <img src="imGogh/MoonGogh.png" class="corner-decoration corner-top" />
+      <img src="imGogh/borbo.png" class="corner-decoration corner-bottom" />
+
+      <div class="final-container">
+        <div class="text-platform centered">
+          <p class="small-label">Contador do nosso tempo</p>
+          <h2 class="glow-title">Nossa Obra-Prima</h2>
+          <div class="counter-display">
+            <div class="counter-label">Contador de memórias</div>
+            <div id="contador"></div>
+            <div class="counter-stars">♡ ✦ ♡</div>
+          </div>
+          <div class="capsula-container">
+            <input class="capsula-input" placeholder="Escreva uma promessa pequena para nós..." />
+            <button class="btn-capsula" onclick="enviarCapsula(this)">Guardar no céu</button>
+          </div>
+          <div class="dedicatoria" style="margin-top:20px;">“Não contamos segundos para ver o fim. Contamos porque cada segundo com você merece existir.”</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="overlay" id="overlay" onclick="fecharMidia()">
+    <div class="overlay-content" id="overlayContent"></div>
+  </div>
+
+  <script src="gogh.js"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Segredo · Nossa Noite Estrelada</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,500;1,900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="Segredo.css" />
+</head>
+<body>
+  <button id="fsBtnSecret" class="fs-btn-secret">⛶</button>
+
+  <audio id="musicaSecreta" loop>
+    <source src="Music/SlowedMacMiller.m4a" type="audio/mpeg" />
+  </audio>
+
+  <div class="background-container">
+    <div id="stars"></div>
+    <div id="hearts"></div>
+    <div class="overlay"></div>
+  </div>
+
+  <div class="canvas-grain"></div>
+
+  <main class="celebration-card">
+    <div class="anniversary-badge">Segredo do Dia dos Namorados</div>
+    <h1 class="main-title">Além das Estrelas</h1>
+
+    <div class="content-grid">
+      <div class="photo-side left">
+        <div class="sunflower-icon">♡</div>
+        <img src="imGogh/CasaGogh.jpeg" alt="Coração" />
+        <div class="photo-caption">Onde o tempo ficou rosa</div>
+      </div>
+
+      <div class="text-center">
+        <div class="scroll-text">
+          <p>Às vezes eu penso no tempo. No quanto tudo passa, muda, foge das nossas mãos e vira lembrança.</p>
+          <p>Mas no meio desse universo enorme, indiferente e silencioso, eu encontrei você.</p>
+          <p>E isso não consertou o mundo inteiro, mas mudou o jeito como eu olho para ele.</p>
+          <p>Porque, aconteça o que acontecer, nada apaga o fato de que em algum ponto do tempo nós existimos juntos. E hoje, no Dia dos Namorados, eu quis deixar isso guardado aqui: como uma estrela rosa dentro da nossa própria Noite Estrelada.</p>
+          <p>Eu te amo, Melissa. Com o lado azul da noite, com o rosa dos corações, com o vermelho da intensidade e com tudo que ainda não sei explicar.</p>
+        </div>
+      </div>
+
+      <div class="photo-side right">
+        <div class="sunflower-icon">❤</div>
+        <img src="imGogh/MesaGogh.jpeg" alt="Lua" />
+        <div class="photo-caption">Nossa eternidade particular</div>
+      </div>
+    </div>
+
+    <div class="secret-mini">
+      <button id="revealBtn">Revelar frase escondida</button>
+      <p id="hiddenPhrase"></p>
+    </div>
+
+    <a href="index.html" class="back-btn">Voltar para nossa galáxia</a>
+  </main>
+
+  <script>
+    const starContainer = document.getElementById('stars');
+    const heartContainer = document.getElementById('hearts');
+
+    for (let i = 0; i < 150; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      const size = Math.random() * 3 + 1;
+      star.style.width = size + 'px';
+      star.style.height = size + 'px';
+      star.style.animationDuration = Math.random() * 3 + 2 + 's';
+      star.style.animationDelay = Math.random() * 5 + 's';
+      starContainer.appendChild(star);
+    }
+
+    for (let i = 0; i < 35; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'soft-heart';
+      heart.textContent = Math.random() > .5 ? '♡' : '❤';
+      heart.style.left = Math.random() * 100 + '%';
+      heart.style.top = Math.random() * 100 + '%';
+      heart.style.fontSize = Math.random() * 18 + 12 + 'px';
+      heart.style.animationDuration = Math.random() * 6 + 6 + 's';
+      heart.style.animationDelay = Math.random() * 5 + 's';
+      heartContainer.appendChild(heart);
+    }
+
+    const musica = document.getElementById('musicaSecreta');
+    const iniciarSom = () => { musica.play().catch(()=>{}); window.removeEventListener('mousedown', iniciarSom); window.removeEventListener('touchstart', iniciarSom); };
+    window.addEventListener('mousedown', iniciarSom);
+    window.addEventListener('touchstart', iniciarSom);
+
+    function createShootingHeart() {
+      const background = document.querySelector('.background-container');
+      const item = document.createElement('div');
+      item.className = 'shooting-star';
+      item.style.left = (Math.random() * 80 + 10) + '%';
+      item.style.top = (Math.random() * 40 + 5) + '%';
+      background.appendChild(item);
+      setTimeout(() => item.remove(), 3000);
+    }
+    function triggerRarityShootingStar() {
+      createShootingHeart();
+      setTimeout(triggerRarityShootingStar, Math.random() * 9000 + 8000);
+    }
+    setTimeout(triggerRarityShootingStar, 2500);
+
+    document.getElementById('revealBtn').addEventListener('click', () => {
+      document.getElementById('hiddenPhrase').innerHTML = 'Entre todas as versões do céu, minha favorita é aquela em que você existe comigo. ♡';
+    });
+
+    const fsBtnSecret = document.getElementById('fsBtnSecret');
+    fsBtnSecret.addEventListener('click', () => {
+      if (!document.fullscreenElement) { document.documentElement.requestFullscreen().catch(()=>{}); fsBtnSecret.innerHTML = '✖'; }
+      else { document.exitFullscreen(); fsBtnSecret.innerHTML = '⛶'; }
+    });
+    document.addEventListener('fullscreenchange', () => { if (!document.fullscreenElement) fsBtnSecret.innerHTML = '⛶'; });
+  </script>
+</body>
+</html>
